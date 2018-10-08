@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>FStock Symbol Prices</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <style type="text/css">
+    button,
+    div,
+    form,
+    input {
+      margin: 10px;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+      <div class="jumbotron jumbotron-fluid bg-dark">
+          <div class="container">
+            <h1 class="display-4 text-white text-center">Stock Search</h1>
+            <p class="lead text-white text-center">Choose from predefined stock options or create tags for stocks of your choice.</p>
+          </div>
+        </div>
+
+    <!-- Rendered buttons will get dumped Here  -->
+    <div id="buttons-view"></div>
+
+    <form id="stock-form">
+      <label for="stock-input">Add a Stock Symbol</label>
+      <input type="text" id="stock-input"><br>
+
+      <!-- Button triggers new stock to be added -->
+      <input class="btn btn-dark" id="add-stock" type="submit" value="Add Symbol">
+    </form>
+
+    <!-- stocks will get dumped here -->
+    <div class="row" id="stocks-view">
+      <div class="col-3 companyName">
+  
+      </div>
+      <div class="col-2 companyLogo">
+      </div>
+      <div class="col-2 companySymbol">
+      </div>
+      <div class="col-3 companyPrice">
+      </div>
+</div>
+<div class="row">
+  <div class="col-10" id="linksList">
+  </div>
+</div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="app.js"></script>
+  </div>
+</body>
+
+</html>
