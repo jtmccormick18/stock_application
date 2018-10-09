@@ -1,5 +1,5 @@
 // Initial array of stocks
-const stocksList = ['FB', 'AAPL', 'TSLA', 'GOOG'];
+const stocksList = ['FB', 'AAPL', 'TSLA', 'GOOG','AMZN', 'MSFT'];
 
 var validationList= new Array;
 $.ajax({
@@ -36,7 +36,7 @@ const displayStockInfo = function () {
     $('.table').append(`<tbody class="text-center">
     <tr>
       <th class="align-middle" scope="row">${response.quote.companyName}</th>
-      <td class="aling-middle"><img class="rounded img-fluid" src='${response.logo.url}'</td>
+      <td class="align-middle"><img class="rounded img-fluid" src='${response.logo.url}'</td>
       <td class="align-middle">${response.quote.symbol}</td>
       <td class="align-middle">${response.quote.latestPrice}</td>
     </tr>`);
@@ -102,7 +102,7 @@ const addButton = function (event) {
   // Deletes the contents of the input
   $('#stock-input').val('');
   } else {
-    $('#stock-input').val('')
+    $('#stock-input').val('');
   }
   // calling render which handles the processing of our stock array
   render();
