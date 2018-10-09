@@ -1,7 +1,7 @@
 // Initial array of stocks
-const stocksList = ['FB', 'AAPL', 'TSLA', 'GOOG','AMZN', 'MSFT'];
+const stocksList = ['FB', 'AAPL', 'TSLA', 'GOOG', 'AMZN', 'MSFT'];
 
-var validationList= new Array;
+var validationList = new Array;
 $.ajax({
   url: 'https://api.iextrading.com/1.0/ref-data/symbols',
   method: 'GET'
@@ -40,16 +40,16 @@ const displayStockInfo = function () {
       <td class="align-middle">${response.quote.symbol}</td>
       <td class="align-middle">${response.quote.latestPrice}</td>
     </tr>`);
-   
-   /* $('.companyName').html(`<h2>Company Name</h2> <p class="align-middle"> ${response.quote.companyName}</p>`)
-    $('.companySymbol').html(`<h2>Symbol</h2> <p class="align-middle"> ${response.quote.symbol}</p>`)
-    $('.companyLogo').html(`<h2>Logo</h2> <img class="img-fluid" src='${response.logo.url}'>`)
-    $('.companyPrice').html(`<h2>Stock Price</h2> <p class="align-middle">${response.quote.latestPrice}</p>`)
-    */
-   $('#linksList').html('<h2> Links Related to Company Stock </h2>');
-    for (let i=0;i <10;i++){
-    $('#linksList').append(`<a href= '${response.news[i].url}'>${response.news[i].headline} </a> </br>`);
-}
+
+    /* $('.companyName').html(`<h2>Company Name</h2> <p class="align-middle"> ${response.quote.companyName}</p>`)
+     $('.companySymbol').html(`<h2>Symbol</h2> <p class="align-middle"> ${response.quote.symbol}</p>`)
+     $('.companyLogo').html(`<h2>Logo</h2> <img class="img-fluid" src='${response.logo.url}'>`)
+     $('.companyPrice').html(`<h2>Stock Price</h2> <p class="align-middle">${response.quote.latestPrice}</p>`)
+     */
+    $('#linksList').html('<h2> Links Related to Company Stock </h2>');
+    for (let i = 0; i < 10; i++) {
+      $('#linksList').append(`<a href= '${response.news[i].url}'>${response.news[i].headline} </a> </br>`);
+    }
   });
 
 }
@@ -90,23 +90,27 @@ const addButton = function (event) {
   // We're using a form so that the user can hit enter instead of clicking the button if they want
   event.preventDefault();
 
-
+  let verify = false;
   // This line will grab the text from the input box
   const stock = $('#stock-input').val().trim().toUpperCase();
   for (let i = 0; i < validationList.length; i++) {
-    if (stock === validationList[i].symbol){
-  
-  // The stock from the textbox is then added to our array
-  stocksList.push(stock);
+    if (stock === validationList[i].symbol) {
 
-  // Deletes the contents of the input
-  $('#stock-input').val('');
-  } else {
-    $('#stock-input').val('');
+      // The stock from the textbox is then added to our array
+      verify = true;
+      stocksList.push(stock);
+
+      // Deletes the contents of the input
+      $('#stock-input').val('');
+    } else {
+      $('#stock-input').val('');
+    }
+    // calling render which handles the processing of our stock array
   }
-  // calling render which handles the processing of our stock array
+  if (verify === false) {
+    alert("Please enter a valid stock symbol");
+  }
   render();
-}
 }
 
 // Event listener for #add-stock button
